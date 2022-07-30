@@ -14,6 +14,10 @@ function App() {
         <h2>Yearly Watched YouTube Videos</h2>
         <BarChart type={"year"} width={700} height={500} />
       </section>
+      <section>
+        <h2>Watch Hour (2021)</h2>
+        <BarChart type={"hour"} width={700} height={500} />
+      </section>
     </div>
   );
 }
