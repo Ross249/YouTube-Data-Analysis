@@ -1,5 +1,6 @@
 import "./App.css";
 import BarChart from "./components/BarChart";
+import LineChart from "./components/LineChart";
 import RankTable from "./components/RankTable";
 
 function App() {
@@ -26,6 +27,10 @@ function App() {
       <section>
         <h2>Duration Rank</h2>
         <RankTable type={"duration"} />
+      </section>
+      <section>
+        <h2>YouTube Video Length distribution</h2>
+        <LineChart width={700} height={500} />
       </section>
     </div>
   );
