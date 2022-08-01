@@ -17,7 +17,7 @@ const LineChart = (props) => {
     const yMinValue = d3.min(data, (d) => d.counts);
     const yMaxValue = d3.max(data, (d) => d.counts);
     const xMinValue = d3.min(data, (d) => d.duration);
-    const xMaxValue = d3.max(data, (d) => d.duration);
+    const xMaxValue = d3.max(data, (d) => d.duration / 60);
 
     // create chart area
     const svg = d3
@@ -58,12 +58,7 @@ const LineChart = (props) => {
       .append("g")
       .attr("class", "x-axis")
       .attr("transform", `translate(0,${height})`)
-      .call(
-        d3
-          .axisBottom()
-          .scale(xScale)
-          .tickFormat((d) => Math.round(d / 60, 0))
-      );
+      .call(d3.axisBottom().scale(xScale));
 
     // create the y axis on the left
     svg.append("g").attr("class", "y-axis").call(d3.axisLeft(yScale));
