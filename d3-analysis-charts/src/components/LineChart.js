@@ -79,6 +79,48 @@ const LineChart = (props) => {
       .attr("stroke-width", 4)
       .attr("class", "line")
       .attr("d", line);
+
+    // create a tooltip
+    const tooltip = d3
+      .select(ref.current)
+      .append("div")
+      .attr("class", "tooltip1")
+      .style("opacity", 0)
+      .style("position", "absolute")
+      .style("background", "white")
+      .style("border", "solid")
+      .style("border-width", "2px")
+      .style("border-radius", "5px");
+
+    // create a circle for each data point
+    svg
+      .selectAll("circle")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("cx", (d) => xScale(d.duration))
+      .attr("cy", (d) => yScale(d.counts))
+      .attr("r", 4)
+      .attr("fill", "teal")
+      .attr("stroke", "white")
+      .attr("stroke-width", 2)
+      .on("mouseover", (d) => {
+        console.log(d);
+        tooltip.transition().duration(200).style("opacity", 1);
+        tooltip.html(`
+          <p>
+            <strong>Duration:</strong> ${d.target.__data__.duration} minutes
+          </p>
+          <p>
+            <strong>Counts:</strong> ${d.target.__data__.counts}
+          </p>
+        `);
+        tooltip.style("left", d.pageX + "px");
+        tooltip.style("top", d.pageY + "px");
+      })
+      .on("mouseout", (d) => {
+        tooltip.transition().duration(200).style("opacity", 0);
+      });
   };
 
   useEffect(() => {
