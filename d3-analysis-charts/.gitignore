@@ -23,3 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 database.config.js
+path.config.js

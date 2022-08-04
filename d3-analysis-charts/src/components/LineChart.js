@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import useFetchData from "../hooks/useFetchData";
 import * as d3 from "d3";
 
@@ -140,4 +140,4 @@ const LineChart = (props) => {
   );
 };
 
-export default LineChart;
+export default React.memo(LineChart);
