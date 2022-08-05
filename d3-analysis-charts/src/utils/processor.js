@@ -1,4 +1,3 @@
-const e = require("express");
 const nodejieba = require("nodejieba");
 const path_config = require("../path.config");
 const data = require(path_config.data_path);
