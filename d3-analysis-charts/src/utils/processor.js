@@ -28,25 +28,24 @@ const extra_words = () => {
     for (let i = 0; i < w.length; i++) {
       res.push(w[i]);
     }
-    //     const MOD = 10000000007;
-    //     for (let i = 0; i < res.length; i++) {
-    //       if (map.has(res[i].word)) {
-    //         map.set(res[i].word, (map.get(res[i].word) + res[i].weight) % MOD);
-    //       } else {
-    //         map.set(res[i].word, res[i].weight);
-    //       }
-    //     }
 
-    //     res = [];
-    //     for (let [key, value] of map.entries()) {
-    //       console.log(value);
-    //       res.push({ word: key, weight: value });
-    //     }
+    for (let i = 0; i < res.length; i++) {
+      if (map.has(res[i].word)) {
+        map.set(res[i].word, map.get(res[i].word) + 1);
+      } else {
+        map.set(res[i].word, 0);
+      }
+    }
+
+    res = [];
+    for (let [key, value] of map.entries()) {
+      res.push({ word: key, weight: value });
+    }
   }
+  res.sort((a, b) => b.weight - a.weight);
   console.log("word count", res.length);
+  console.log(res);
   return res;
 };
-
-extra_words();
 
 module.exports = { extra_words };
