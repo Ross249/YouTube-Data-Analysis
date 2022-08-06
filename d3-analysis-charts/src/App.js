@@ -2,6 +2,7 @@ import "./App.css";
 import BarChart from "./components/BarChart";
 import LineChart from "./components/LineChart";
 import RankTable from "./components/RankTable";
+import WordCloud from "./components/WordCloud";
 
 function App() {
   return (
@@ -31,6 +32,10 @@ function App() {
       <section>
         <h2>YouTube Video Length distribution</h2>
         <LineChart width={700} height={500} />
+      </section>
+      <section>
+        <h2>WordCloud</h2>
+        <WordCloud />
       </section>
     </div>
   );

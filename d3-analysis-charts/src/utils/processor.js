@@ -1,6 +1,8 @@
 const nodejieba = require("nodejieba");
 const path_config = require("../path.config");
 const data = require(path_config.data_path);
+const fs = require("fs");
+const path = require("path");
 
 const extra_words = () => {
   nodejieba.load({
@@ -44,7 +46,12 @@ const extra_words = () => {
   res.sort((a, b) => b.weight - a.weight);
   console.log("word count", res.length);
   console.log(res);
-  return res;
+  fs.writeFileSync(
+    path.join(__dirname, "../data/word_count.json"),
+    JSON.stringify(res)
+  );
 };
+
+extra_words();
 
 module.exports = { extra_words };
